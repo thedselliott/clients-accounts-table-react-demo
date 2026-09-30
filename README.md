@@ -12,9 +12,9 @@ adds only a presentational demo page (`src/App.tsx`) around the same
 ## Links
 
 - Figma: https://www.figma.com/design/SWKjhkZnR6DDFKUdtTOHWf
-- Storybook demo (live): https://<github-username>.github.io/clients-accounts-table-storybook/
-- Storybook repo: https://github.com/<github-username>/clients-accounts-table-storybook
-- React demo (live): https://<github-username>.github.io/clients-accounts-table-react-demo/
+- Storybook demo (live): https://thedselliott.github.io/clients-accounts-table-storybook/
+- Storybook repo: https://github.com/thedselliott/clients-accounts-table-storybook
+- React demo (live): https://thedselliott.github.io/clients-accounts-table-react-demo/
 
 ## Run locally
 
