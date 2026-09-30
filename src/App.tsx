@@ -8,11 +8,13 @@ import { sampleRows } from './sampleData';
  * deliverable-quality demo (unlike devPreview.tsx, which is a dev-only
  * scratch harness not meant to be shown to anyone).
  *
- * Density and loading/error toggles are wired up here so a reviewer can
- * see those states without needing Storybook's Controls panel.
+ * Loading/error toggles are wired up here so a reviewer can see those
+ * states without needing Storybook's Controls panel. Density isn't
+ * duplicated here — DataGrid owns that live via its own Row Height
+ * control, so a second, page-level toggle would just go stale the
+ * moment someone clicked the grid's real one.
  */
 export function App() {
-  const [density, setDensity] = useState<'compact' | 'comfortable' | 'standard'>('comfortable');
   const [showLoading, setShowLoading] = useState(false);
   const [showError, setShowError] = useState(false);
 
@@ -63,25 +65,6 @@ export function App() {
           }}
         >
           <label style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-            Density
-            <select
-              value={density}
-              onChange={(e) => setDensity(e.target.value as typeof density)}
-              style={{
-                padding: '2px 4px',
-                border: '1px solid var(--grid-color-outline)',
-                borderRadius: 4,
-                font: 'inherit',
-                color: 'inherit',
-                background: 'var(--grid-color-surface)',
-              }}
-            >
-              <option value="compact">Compact</option>
-              <option value="comfortable">Comfortable</option>
-              <option value="standard">Standard</option>
-            </select>
-          </label>
-          <label style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <input type="checkbox" checked={showLoading} onChange={(e) => setShowLoading(e.target.checked)} />
             Loading state
           </label>
@@ -93,7 +76,6 @@ export function App() {
 
         <DataGrid
           rows={sampleRows}
-          density={density}
           loading={showLoading}
           error={showError ? 'Could not load accounts. Check your connection and try again.' : null}
         />
